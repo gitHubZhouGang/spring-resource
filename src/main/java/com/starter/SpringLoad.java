@@ -1,6 +1,7 @@
 package com.starter;
 
 import org.springframework.web.context.ContextLoaderListener;
+import org.springframework.web.context.WebApplicationContext;
 
 /**
  * @Author ZGang
@@ -12,6 +13,5 @@ public class SpringLoad {
 
     public void seeContextLoaderListener(){
         ContextLoaderListener contextLoaderListener = null;
-
     }
 }
