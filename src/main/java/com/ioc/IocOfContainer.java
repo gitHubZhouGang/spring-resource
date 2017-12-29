@@ -1,7 +1,11 @@
 package com.ioc;
 
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.Constants;
+import org.springframework.core.env.EnvironmentCapable;
 
 /**
  * @Author ZGang
@@ -36,6 +40,14 @@ public class IocOfContainer {
      */
     public void seeApplicationContextInterFace(){
         ApplicationContext context = null;
+
+    }
+
+    public void seeXmlBeanFactoryClass(){
+        XmlBeanFactory xmlBeanFactory = null;//在Spring3.1之后   建议使用 {@link XmlBeanDefinitionReader  或者DefaultListableBeanFactory
+        //从XmlBeanDefinitionReader  看如何从Xml中获得Bean的定义 以及Bean的依赖关系
+        XmlBeanDefinitionReader xmlBeanDefinitionReader = null;
+
 
     }
 }
