@@ -22,9 +22,9 @@ public class WhatIsIoc {
      *
      *   Ioc的优点在于解耦 统一管理
      *
-     *   Ioc实现关键在于如何管理类之间的对象和类的生命周期
+     *   Ioc实现关键在于如何管理(Controller)类之间的对象和类的生命周期
      *
-     *   Ioc使用关键在于如何实现反转
+     *   Ioc使用关键在于如何实现反转(Inversion)
      *
      */
 
