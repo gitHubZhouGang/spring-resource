@@ -11,7 +11,13 @@ import org.springframework.web.context.WebApplicationContext;
  */
 public class SpringLoad {
 
+    /**
+     * 对于java Web应用来说，spring通过servlet规范来初始化WebApplicationContext(ioc容器)
+     *  ContextLister 实现了ServletContextListener接口，
+     *  当ServletContext初始化和销毁的时候就会调用contextInitialized和contextDestroyed方法，用来初始化IOC容器和释放IOC容器资源
+     */
     public void seeContextLoaderListener(){
         ContextLoaderListener contextLoaderListener = null;
+
     }
 }

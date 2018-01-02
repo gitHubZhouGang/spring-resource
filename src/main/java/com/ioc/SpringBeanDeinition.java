@@ -1,16 +1,14 @@
 package com.ioc;
 
-import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.config.BeanDefinition;
-import org.springframework.beans.factory.config.ConstructorArgumentValues;
 
 /**
- * @Author ZGang
- * @Description: Spring 如何控制管理类 以及其之间的依赖关系
- * @Date: Create in 13:12 2017/12/29
- * @Modified By:
- */
-public class IocController {
+ * @author ZGang
+ * @description 此类主要用来关注Spring是如何处理SpringBean对象
+ *    包含Bean的定义  以及关系处理
+ * @create 2017-12-30 00:09
+ **/
+public class SpringBeanDeinition {
 
     /**
      * Spring 通过BeanDefinition来管理对象以及对象之间的关系
@@ -73,6 +71,5 @@ public class IocController {
 
         beanDefinition.getOriginatingBeanDefinition();
     }
-
 
 }
