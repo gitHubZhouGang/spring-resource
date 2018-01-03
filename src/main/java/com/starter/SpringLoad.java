@@ -1,5 +1,6 @@
 package com.starter;
 
+import org.springframework.web.context.ConfigurableWebApplicationContext;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
@@ -36,6 +37,7 @@ public class SpringLoad {
         ContextLoader contextLoader = null;//类
         contextLoader.initWebApplicationContext(null);//初始化容器
 
-        //测试提交   查看分支的情况
+        //所有的context类都必须实现这个接口
+        ConfigurableWebApplicationContext configurableWebApplicationContext = null;//接口
     }
 }
