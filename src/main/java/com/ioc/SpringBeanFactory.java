@@ -8,6 +8,8 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory;
 import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
 
 /**
  * SpringBeanFactory 主要是用来描述Spring Bean的创建架构
@@ -34,5 +36,13 @@ public class SpringBeanFactory {
         AbstractAutowireCapableBeanFactory abstractAutowireCapableBeanFactory = null;//抽象类
 
         AutowireCapableBeanFactory autowireCapableBeanFactory = null;//接口 标示接口自动装配规则
+    }
+
+    public void seeXmlBeanFactoryClass(){
+        XmlBeanFactory xmlBeanFactory = null;//在Spring3.1之后   建议使用 {@link XmlBeanDefinitionReader  或者DefaultListableBeanFactory
+        //从XmlBeanDefinitionReader  看如何从Xml中获得Bean的定义 以及Bean的依赖关系
+        XmlBeanDefinitionReader xmlBeanDefinitionReader = null;
+
+
     }
 }
