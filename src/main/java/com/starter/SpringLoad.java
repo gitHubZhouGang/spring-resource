@@ -1,9 +1,11 @@
 package com.starter;
 
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.web.context.ConfigurableWebApplicationContext;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.XmlWebApplicationContext;
 
 /**
  * @Author ZGang
@@ -39,5 +41,10 @@ public class SpringLoad {
 
         //所有的context类都必须实现这个接口
         ConfigurableWebApplicationContext configurableWebApplicationContext = null;//接口
+
+        AbstractApplicationContext abstractApplicationContext;//抽象类  主要是refresh方法
+
+        XmlWebApplicationContext xmlWebApplicationContext;//默认的Web容器实现类   如果不指定则直接使用这个
+
     }
 }
