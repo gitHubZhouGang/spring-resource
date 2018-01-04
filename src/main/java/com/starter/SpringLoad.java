@@ -47,4 +47,56 @@ public class SpringLoad {
         XmlWebApplicationContext xmlWebApplicationContext;//默认的Web容器实现类   如果不指定则直接使用这个
 
     }
+
+    /**
+     * Context 初始化
+     */
+    public void contextInit(){
+        /*
+         *   1,创建ApplicationContext   ContextLoad.createWebApplicationContext(servletContext);
+         *      可以通过Servlet initparam 指定创建的Context类型 如果不指定则默认为XmlWebApplicationContext
+         */
+
+        /**
+         *  2,检验创建的Context 是否为ConfigurableWebApplicationContext 子类;  this.context instanceof ConfigurableWebApplicationContext
+         *      如果不是这个子类,则表明我们无需读取配置资源 来对Context初始化
+         *      同时判断状态  context.isActive();   active是通过AtomicBoolean 来标识的;相关操作轻查看jdk原子操作包
+         */
+
+        /**
+         * 3,设置Context Parent类
+         */
+
+        /**
+         * 4,初始化Context准备   ContextLoad.configureAndRefreshWebApplicationContext(context, servletContext);
+         *      4.1 设置 Context.id  通过配置或者自动生产
+         *      4.2 获得配置文件地址  String configLocationParam = sc.getInitParameter(CONFIG_LOCATION_PARAM);
+         *      4.3 Context.refresh();  调用的是AbstractApplicationContext中的实现方法
+         *
+         */
+
+        /**
+         * 5,开始初始化AbstractApplicationContext.refresh();
+         *      5.1 prepareRefresh(); 为初始化做准备   设置 closed  active 属性;
+         *      5.2 obtainFreshBeanFactory();  绑定/刷新BeanFactory
+         *          5.2.1 先刷新AbstractRefreshableApplicationContext.refreshBeanFactory();
+         *          5.2.2 如果已存在,则先销毁Bean 然后关闭BeanFactory
+         *          5.2.3 判断Beanfactory 如果是开始初始化AbstractApplicationContext.getInternalParentBeanFactory();  如果是ConfigurableApplicationContext则获取的是父类的BeanFactory,如果不是则直接调用getParent();
+         *          5.2.4 创建AbstractRefreshableApplicationContext.createBeanFactory();-->DefaultListableBeanFactory对象;
+         *          5.2.5 设置BeanFactory AbstractRefreshableApplicationContext.customizeBeanFactory(beanFactory); 是否允许同名覆盖 和循环调用  如果想设置这两个属性则可以在web中指定BeanFactory为DefaultListableBeanFactory  然后通过setAllowCircularReferences和setAllowBeanDefinitionOverriding这俩ing方法来做
+         *          5.2.6
+         *      5.3 prepareBeanFactory(beanFactory);
+         *      5.4 postProcessBeanFactory(beanFactory);
+         *      5.5 invokeBeanFactoryPostProcessors(beanFactory);
+         *      5.6 registerBeanPostProcessors(beanFactory);
+         *      5.7 initMessageSource();
+         *      5.8 initApplicationEventMulticaster();
+         *      5.9 onRefresh();
+         *      5.10 registerListeners();
+         *      5.11 finishBeanFactoryInitialization(beanFactory);
+         *      5.12 finishRefresh();
+         *
+         */
+
+    }
 }
