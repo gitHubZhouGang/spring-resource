@@ -58,7 +58,7 @@ public class SpringLoad {
          */
 
         /**
-         *  2,检验创建的Context 是否为ConfigurableWebApplicationContext 子类;  this.context instanceof ConfigurableWebApplicationContext
+         *  2,检验创建的Context 是否和ConfigurableWebApplicationContext是否相同或是另一个类的超类或接口。 ;  this.context isAssignableFrom ConfigurableWebApplicationContext
          *      如果不是这个子类,则表明我们无需读取配置资源 来对Context初始化
          *      同时判断状态  context.isActive();   active是通过AtomicBoolean 来标识的;相关操作轻查看jdk原子操作包
          */
@@ -84,16 +84,17 @@ public class SpringLoad {
          *          5.2.3 判断Beanfactory 如果是开始初始化AbstractApplicationContext.getInternalParentBeanFactory();  如果是ConfigurableApplicationContext则获取的是父类的BeanFactory,如果不是则直接调用getParent();
          *          5.2.4 创建AbstractRefreshableApplicationContext.createBeanFactory();-->DefaultListableBeanFactory对象;
          *          5.2.5 设置BeanFactory AbstractRefreshableApplicationContext.customizeBeanFactory(beanFactory); 是否允许同名覆盖 和循环调用  如果想设置这两个属性则可以在web中指定BeanFactory为DefaultListableBeanFactory  然后通过setAllowCircularReferences和setAllowBeanDefinitionOverriding这俩ing方法来做
-         *          5.2.6
-         *      5.3 prepareBeanFactory(beanFactory);
-         *      5.4 postProcessBeanFactory(beanFactory);
+         *          5.2.6 AbstractRefreshableApplicationContext.loadBeanDefinitions(beanFactory); 开始解析xml文件  加载BeanDefinitions
+         *
+         *      5.3 prepareBeanFactory(beanFactory);//准备BeanFactory
+         *      5.4 postProcessBeanFactory(beanFactory);//
          *      5.5 invokeBeanFactoryPostProcessors(beanFactory);
-         *      5.6 registerBeanPostProcessors(beanFactory);
+         *      5.6 registerBeanPostProcessors(beanFactory);//作用是用于拦截Bean的创建
          *      5.7 initMessageSource();
-         *      5.8 initApplicationEventMulticaster();
+         *      5.8 initApplicationEventMulticaster();//初始化上下文的事件多播组建，ApplicationEvent触发时由multicaster通知给ApplicationListener
          *      5.9 onRefresh();
-         *      5.10 registerListeners();
-         *      5.11 finishBeanFactoryInitialization(beanFactory);
+         *      5.10 registerListeners();//注册事件监听器，事件监听Bean统一注册到multicaster里头，ApplicationEvent事件触发后会由multicaster广播
+         *      5.11 finishBeanFactoryInitialization(beanFactory);//非延迟加载的单例Bean实例化
          *      5.12 finishRefresh();
          *
          */
