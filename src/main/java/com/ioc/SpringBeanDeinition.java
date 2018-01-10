@@ -1,6 +1,9 @@
 package com.ioc;
 
 import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.beans.factory.support.DefaultListableBeanFactory;
+import org.springframework.context.support.AbstractRefreshableApplicationContext;
+import org.springframework.web.context.support.XmlWebApplicationContext;
 
 /**
  * @author ZGang
@@ -70,6 +73,25 @@ public class SpringBeanDeinition {
         beanDefinition.getResourceDescription();
 
         beanDefinition.getOriginatingBeanDefinition();
+    }
+
+    /**
+     * 了解BeanDefiniton的初始化
+     */
+    public  void seeBeanDefinitions(){
+        /**
+         *  1,在Web中 BeanDefainition主要是在Load配置文件的时候  读取配置文件信息转化为我们的对象信息;
+         *   XmlWebApplicationContext.loadBeanDefinitions(DefaultListableBeanFactory beanFactory)
+         */
+
+        /**
+         * 2,在解析xml之前  我们看到了Spring Environment,Reader,Loader,Resolver系列接口 在继续深入之前我们有必要了解一下着几个接口
+         *   2.1 PropertyResolver
+         *   2.3 Environment
+         *   2.4 ResourceLoader
+         *   2.5 BeanDefinitionReader
+         */
+
     }
 
 }
