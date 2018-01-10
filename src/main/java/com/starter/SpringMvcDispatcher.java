@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
  * 从请求进入,了解springMvc
  */
 public class SpringMvcDispatcher {
-    public void doDisPatcher() {
         HttpServlet httpServlet = null;
         //HttpServlet#service(ServletRequest req, ServletResponse res)
         /*service这个方法的内容很简单，就是将ServletRequest和ServletResponse转换为HttpServletRequest和HttpServletResponse。
@@ -70,5 +69,4 @@ public class SpringMvcDispatcher {
             步骤5 由ViewResolver解析View（viewResolver.resolveViewName(viewName, locale)）
             步骤6 视图在渲染时会把Model传入（view.render(mv.getModelInternal(), request, response);）
             执行处理器相关的拦截器的完成后处理（HandlerInterceptor.afterCompletion）*/
-    }
 }
