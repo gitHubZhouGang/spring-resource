@@ -5,6 +5,7 @@ import org.springframework.web.util.WebUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.servlet.HandlerAdapter;
 
 /**
  * @author Weirdo
@@ -110,6 +111,7 @@ public class DispatcherServlet extends FrameworkServlet {
 
     private HandlerAdapter getHandlerAdapter(Object handler) {
         return new HandlerAdapter() {
+
             @Override
             public boolean supports(Object handler) {
                 return false;
